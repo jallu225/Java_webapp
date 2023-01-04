@@ -1,14 +1,19 @@
-pipeline{
+pipeline {
     agent any
-    
-    environment{
-        PATH = "/opt/maven3/bin:$PATH"
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "maven"
     }
-    stages{
-        stage("Git Checkout"){
-            steps{
-                git 'https://github.com/jallu225/Java_webapp.git'
+
+    stages {
+        stage('Git Checkout') {
+            steps {
+                // Get some code from a GitHub repository
+                git branch: 'main', url: 'https://github.com/jallu225/Java_webapp.git'
+                
             }
+
         }
         stage("Maven Build"){
             steps{
