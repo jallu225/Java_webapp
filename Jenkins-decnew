@@ -18,7 +18,7 @@ pipeline {
         stage("Maven Build"){
             steps{
                 sh "mvn clean package"
-                sh "mv webapp/target/*.war target/myweb.war"
+                sh "sudo mv webapp/target/*.war target/myweb.war"
             }
         }
         stage("deploy-dev"){
